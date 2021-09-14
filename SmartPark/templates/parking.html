@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SmartParkingSystem</title>
+  <meta charset="utf-8">
+  {% load staticfiles %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static '/CRD_STATIC/css/bootstrap.min.css' %}">
+  <style>
+  .mytheme {
+  border-color: #eccccf;
+  color: green;
+}
+
+.mytheme:hover {
+  background-color: #eccccf;
+  color: white;
+}
+</style>
+</head>
+<br/>
+<body style="background-color:#f8d7da;">	 
+<div class="table-responsive">
+	<div class="container">
+		<form class="d-flex" method="get" action="/CRD/search/">
+			<input class="form-control me-2" href="/CRD/search/" type="search" name="q" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-info " type="submit">Search</button>
+		</form>
+	<center><h6>{{Notify}}</h6></center>
+  <table class="table table-danger table-striped">
+    <thead>
+      <tr>
+        <th>Pictures</th>
+        <th>Taken By</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for data in Data %}
+      <tr onclick="window.location='/smartpark/parking/{{data.id}}';" >
+        <td><img src="/smartpark/media/{{data.image}}" alt="" height=100 width=100></td>
+        <td>{{data.cam_name}}</td>
+        <td>{{data.date}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</body>
+</html>
+
